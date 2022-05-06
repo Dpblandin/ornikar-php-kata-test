@@ -12,7 +12,7 @@ use App\Entity\Template;
 use App\Repository\InstructorRepository;
 use App\Repository\LessonRepository;
 use App\Repository\MeetingPointRepository;
-use App\TemplateManager;
+use App\Template\TemplateManager;
 
 class TemplateManagerTest extends \PHPUnit_Framework_TestCase
 {
