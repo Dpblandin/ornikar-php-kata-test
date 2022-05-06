@@ -4,7 +4,7 @@ namespace App\Template\Parsers;
 
 use App\Entity\Learner;
 
-class UserReplacer implements ReplaceText
+class UserParser implements ReplaceText
 {
     protected Learner $user;
 

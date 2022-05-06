@@ -8,9 +8,9 @@ use App\Entity\Learner;
 use App\Entity\Lesson;
 use App\Entity\Template;
 use App\Helper\Data;
-use App\Template\Parsers\InstructorReplacer;
+use App\Template\Parsers\InstructorParser;
 use App\Template\Parsers\LessonParser;
-use App\Template\Parsers\UserReplacer;
+use App\Template\Parsers\UserParser;
 
 class TemplateComputer
 {
@@ -23,8 +23,8 @@ class TemplateComputer
 
         $this->parsers = [
             LessonParser::class => fn () => Data::get($this->data, 'lesson'),
-            InstructorReplacer::class => fn () => Data::get($this->data, 'lesson.instructorId'),
-            UserReplacer::class => fn () => $this->getUser(),
+            InstructorParser::class => fn () => Data::get($this->data, 'lesson.instructorId'),
+            UserParser::class => fn () => $this->getUser(),
         ];
     }
 

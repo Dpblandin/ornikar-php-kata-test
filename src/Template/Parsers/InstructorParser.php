@@ -5,7 +5,7 @@ namespace App\Template\Parsers;
 use App\Entity\Instructor;
 use App\Repository\InstructorRepository;
 
-class InstructorReplacer implements ReplaceText
+class InstructorParser implements ReplaceText
 {
     protected ?Instructor $instructor;
 
