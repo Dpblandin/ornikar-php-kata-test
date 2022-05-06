@@ -1,7 +1,8 @@
 {
   "require": {
     "php": "^7.4",
-    "fzaninotto/faker": "v1.6.0"
+    "fzaninotto/faker": "v1.6.0",
+    "symfony/var-dumper": "^5.4"
   },
   "require-dev": {
     "phpunit/phpunit": "^5.7"
