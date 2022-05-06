@@ -8,6 +8,6 @@ class TemplateManager
 {
     public function getTemplateComputed(Template $tpl, array $data)
     {
-        return (new TemplateComputer())->render($tpl, $data);
+        return (new TemplateComputer($data))->render($tpl);
     }
 }
