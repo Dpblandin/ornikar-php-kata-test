@@ -3,9 +3,7 @@
 namespace App\Template;
 
 use App\Context\ApplicationContext;
-use App\Entity\Instructor;
 use App\Entity\Learner;
-use App\Entity\Lesson;
 use App\Entity\Template;
 use App\Helper\Data;
 use App\Template\Parsers\InstructorParser;
@@ -33,8 +31,7 @@ class TemplateComputer
         $replaced = clone($tpl);
         $replaced->subject = $this->computeText($replaced->subject);
         $replaced->content = $this->computeText($replaced->content);
-
-
+        
         return $replaced;
     }
 

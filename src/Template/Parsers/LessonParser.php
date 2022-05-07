@@ -12,15 +12,16 @@ class LessonParser implements ReplaceText
 
     public function __construct(?Lesson $lesson = null)
     {
-        $this->lesson = $lesson;
+        $this->lesson = $lesson instanceof Lesson
+            ? LessonRepository::getInstance()->getById($lesson->id)
+            : null;
     }
     public function replace(string $text): string
     {
-        if (! $this->lesson instanceof Lesson) {
+        if (! $this->lesson) {
             return $text;
         }
 
-        $lessonFromRepo = LessonRepository::getInstance()->getById($this->lesson->id);
         $meetingPoint = MeetingPointRepository::getInstance()->getById($this->lesson->meetingPointId);
 
         $text = str_replace('[lesson:start_date]', $this->lesson->start_time->format('d/m/Y'), $text);
@@ -31,16 +32,16 @@ class LessonParser implements ReplaceText
 
         $text = str_replace(
             '[lesson:summary_html]',
-            Lesson::renderHtml($lessonFromRepo),
+            Lesson::renderHtml($this->lesson),
             $text
         );
         $text = str_replace(
             '[lesson:summary]',
-            Lesson::renderText($lessonFromRepo),
+            Lesson::renderText($this->lesson),
             $text
         );
 
-        if ($this->lesson->meetingPointId) {
+        if ($meetingPoint) {
             $text = str_replace('[lesson:meeting_point]', $meetingPoint->name, $text);
         }
 

@@ -20,11 +20,9 @@ class InstructorParser implements ReplaceText
             return str_replace('[instructor_link]', '', $text);
         }
 
-        $instructorOfLesson = InstructorRepository::getInstance()->getById($this->instructor->id);
-
         $text = str_replace(
             '[lesson:instructor_name]',
-            $instructorOfLesson->firstname,
+            $this->instructor->firstname,
             $text
         );
 
